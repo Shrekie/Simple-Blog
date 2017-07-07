@@ -1,5 +1,5 @@
 {
-  "name": "boiler",
+  "name": "simpleBlog",
   "version": "1.0.0",
   "description": "",
   "main": "server/server.js",
@@ -16,9 +16,13 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "hbs": "^4.0.1",
     "lodash": "^4.17.4",
     "mongodb": "^2.2.29",
-    "mongoose": "^4.11.1"
+    "mongoose": "^4.11.1",
+    "passport": "^0.3.2",
+    "passport-google-oauth": "^1.0.0"
   },
   "devDependencies": {
     "expect": "^1.20.2",

@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 
-mongoose.Promise = global.Promise; //set promise library to global
-mongoose.createConnection(process.env.dbURI);
+mongoose.Promise = mongoose.connect(process.env.dbURI,{
+	useMongoClient: true
+});
 
 module.exports = {mongoose};

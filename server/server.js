@@ -1,38 +1,54 @@
 require('./config/config.js');
 
 // Package imports
-const _ = require('lodash');
-const express = require('express')
-const bodyParser = require('body-parser')
+const express = require('express');
+const hbs = require('hbs');
+const bodyParser = require('body-parser');
+const session = require('express-session');
 
 // Custom imports
+const {secrets} = require('./config/secrets.js');
 const {mongoose} = require('./db/mongoose.js');
-const {User} = require('./models/user');
+const oAuthRoute = require('./routes/google-oauth');
+const blogRoute = require('./routes/blog');
 
-var app = express();
+const app = express();
 
 // Middleware
+app.set('view engine', 'hbs');
+app.set('views', __dirname + '/views');
+app.use(express.static(__dirname + '/public/'));
 app.use(bodyParser.json());
+app.use(session({ 
+	secret: secrets.sessionSecret,
+	resave: true,
+  	saveUninitialized: true,
+  	cookie: { secure: false }
+}));
 
-// Routes
-app.get('/users', (req, res)=>{
-
-	User.find().then((users) =>{
-		res.send({users})
-	}, (e) => {
-		res.status(400).send(e);
-	})
-
+app.get('/error', (req, res) => {
+	res.send('Something went wrong.');
 });
 
-// Static
-app.use(express.static(__dirname + '/public/'));
-app.get('*', (req, res) => {
-	res.sendFile(__dirname + '/public/html/index.html');
-})
+// OAuth2 authentication
+app.use(oAuthRoute);
+
+// isAuthenticated 
+app.use('/blog/*', function(req, res, next){
+	console.log(req.isAuthenticated());
+	if(req.isAuthenticated()) next();
+	else res.redirect('/');
+});
+
+// After authentication blog calls
+app.use(blogRoute);
+
+app.get('/', (req, res) => {
+	console.log(req.isAuthenticated());
+	if(req.isAuthenticated()) res.redirect('/blog/me');
+	else res.render('frontPage.hbs');
+});
 
 app.listen(process.env.PORT, () => {
 	console.log('Started on port ', process.env.PORT);
 });
-
-module.exports = {app};
