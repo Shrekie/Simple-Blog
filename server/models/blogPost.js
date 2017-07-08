@@ -4,7 +4,8 @@ var Schema = mongoose.Schema;
 var BlogPost = new Schema({
 	title: String,
 	author: String,
-	body: String,
+	content: String,
+	profileID: String,
 	date: { type: Date, default: Date.now }
 });
 

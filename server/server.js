@@ -15,10 +15,12 @@ const blogRoute = require('./routes/blog');
 const app = express();
 
 // Middleware
+hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
 app.use(express.static(__dirname + '/public/'));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({ 
 	secret: secrets.sessionSecret,
 	resave: true,

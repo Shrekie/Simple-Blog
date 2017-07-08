@@ -1,26 +1,48 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        <!-- JQUERY -->
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    {{> header}}
 
-        <!-- BOOTSTRAP -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <body class="pink lighten-5">
+        <div class="container">
 
-        <!-- CORE -->
-        <link rel="stylesheet" href="/css/core.css">
-        <script src="/js/core.js"></script>
+            <div class="row">
 
-        <!-- META -->
-        <meta charset="utf-8">
-        <title>SimpleBlog</title>
-    </head>
+                <nav class="col s12">
+                    <div class="nav-wrapper">
+                        <a class="brand-logo left">SimpleBlog</a>
+                        <ul id="nav-mobile" class="right">
+                            <li><a href="/blog/me">Post</a></li>
+                            <li><a href="">View</a></li>
+                        </ul>
+                    </div>
+                </nav>
 
-    <body>
-    	<p>{{profileID}}</p>
-    	<p>{{name}}
+
+            </div>
+
+            <div class="row">
+
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="titleData" type="text" class="validate">
+                    <label for="icon_prefix">Title</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <i class="material-icons prefix">mode_edit</i>
+                    <textarea id="contentData" class="materialize-textarea"></textarea>
+                    <label for="icon_prefix2">Content</label>
+                </div>
+
+
+                <a id="addPost" class="col s12 btn-large waves-effect waves-light red">
+                    <i class="material-icons">add</i>
+                </a>
+
+            </div>
+
+        </div>
     </body>
-    
+
 </html>

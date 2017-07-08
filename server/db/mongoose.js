@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
 
-mongoose.Promise = mongoose.connect(process.env.dbURI,{
+mongoose.Promise = global.Promise;
+
+mongoose.connect(process.env.dbURI,{
 	useMongoClient: true
 });
 
