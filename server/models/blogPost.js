@@ -8,8 +8,7 @@ var BlogPost = new Schema({
 		maxlength: 40
 	},
 	author: {
-		type: String,
-		required: true
+		type: String
 	},
 	content: {
 		type: String,
