@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    {{> header}}
+    <body class="pink lighten-5">
+        <div class="container">
+            {{> navbar this}}
+            <div class="row">
+            <div class="col s12">{{user.name}}</div>
+            </div>
+            <div class="row">
+                {{#each docs}}
+                <div class="col s12">
+                    <div class="divider"></div>
+                    <div class="section">
+                        <h5>{{title}}</h5>
+                        <p>{{content}}</p>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+
+        </div>
+    </body>
+
+</html>

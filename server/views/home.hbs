@@ -1,45 +1,28 @@
 <!DOCTYPE html>
 <html>
-
     {{> header}}
-
     <body class="pink lighten-5">
         <div class="container">
-
-            <div class="row">
-
-                <nav class="col s12">
-                    <div class="nav-wrapper">
-                        <a class="brand-logo left">SimpleBlog</a>
-                        <ul id="nav-mobile" class="right">
-                            <li><a href="/blog/me">Post</a></li>
-                            <li><a href="">View</a></li>
-                        </ul>
-                    </div>
-                </nav>
-
-
-            </div>
-
+            {{> navbar this}}
             <div class="row">
 
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
-                    <input id="titleData" type="text" class="validate">
+                    <input id="titleData" type="text" data-length="40" class="validate">
                     <label for="icon_prefix">Title</label>
                 </div>
 
-                <div class="input-field col s12">
+                <div class="input-field col s10">
                     <i class="material-icons prefix">mode_edit</i>
-                    <textarea id="contentData" class="materialize-textarea"></textarea>
+                    <textarea id="contentData" data-length="250" class="materialize-textarea validate"></textarea>
                     <label for="icon_prefix2">Content</label>
                 </div>
 
-
+            </div>
+            <div class="row">
                 <a id="addPost" class="col s12 btn-large waves-effect waves-light red">
                     <i class="material-icons">add</i>
                 </a>
-
             </div>
 
         </div>

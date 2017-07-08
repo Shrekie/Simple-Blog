@@ -37,7 +37,6 @@ app.use(oAuthRoute);
 
 // isAuthenticated 
 app.use('/blog/*', function(req, res, next){
-	console.log(req.isAuthenticated());
 	if(req.isAuthenticated()) next();
 	else res.redirect('/');
 });
@@ -46,7 +45,6 @@ app.use('/blog/*', function(req, res, next){
 app.use(blogRoute);
 
 app.get('/', (req, res) => {
-	console.log(req.isAuthenticated());
 	if(req.isAuthenticated()) res.redirect('/blog/me');
 	else res.render('frontPage.hbs');
 });
